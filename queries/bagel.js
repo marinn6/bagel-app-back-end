@@ -36,4 +36,13 @@ const deleteBagel = async (id) => {
     }
 }
 
-module.exports = { getAllBagels, getBagelById, createBagel, deleteBagel }
+const updateBagel = async (id, bagel) => {
+    try {
+        const updatedBagel = await db.one("UPDATE bagels SET name=$1, is_favorite=$2 WHERE id=$3 RETURNING *", [bagel.name])
+        return updatedBagel
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { getAllBagels, getBagelById, createBagel, deleteBagel, updateBagel }

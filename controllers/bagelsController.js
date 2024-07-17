@@ -1,12 +1,12 @@
 const express = require('express')
 const bagels = express.Router()
-
+const { getAllBagels, getBagelById, createBagel, deleteBagel, updateBagel } =require('../queries/bagel')
 
 //Index: localhost:4008/bagels
 bagels.get("/", async (req, res) => {
     const allBagels = await getAllBagels()
     if(allBagels[0]){
-        res.status(200).json(allSongs)
+        res.status(200).json(allBagels)
     } else {
         res.status(404).json({ error: "Internal Server Error" })
     }
@@ -17,7 +17,7 @@ bagels.get("/:id", async (req, res) => {
     const { id } = req.params
     const singleBagel = await getBagelById(id)
     if(singleBagel.id){
-        res.status(200).json(singleSong)
+        res.status(200).json(singleBagel)
     } else {
         res.status(404).json({ error: "Bagel Not Found" })
     }
@@ -36,13 +36,24 @@ bagels.delete("/:id", async (req, res) => {
     try {
         const { id } = req.params
         const deletedBagel = await deleteBagel(id)
-        if(deleteBage.id){
+        if(deletedBagel.id){
             res.status(200).json({ message: "Successfull deleted bagel." })
         } else {
             res.status(404).json({ error: "Color Not Found" })
         } 
     }   catch (error) {
-        console.error(`Error deleting color with id: ${id}`)
+        console.error(`Error deleting bagel with id: ${id}`)
+    }
+})
+
+//Edit/UPDATE: localhost:4008/bagels/:id
+bagels.put(":/id", async (req, res) => {
+    const { id } = req.params
+    const updatedBagel = await updateBagel(id, req.body)
+    if(updatedColor.id){
+        res.status(200).json(updatedBagel)
+    } else {
+        res.status(404).jsonp({ error: "Bagel Not Found" })
     }
 })
 
