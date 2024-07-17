@@ -27,4 +27,13 @@ const createBagel = async() => {
     }
 }
 
-module.exports = { getAllBagels, getBagelById, createBagel }
+const deleteBagel = async (id) => {
+    try {
+        const deletedBagel = await db.one("DELETE FROM bagels WHERE id=$1 RETURNING *", id)
+        return deletedBagel
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { getAllBagels, getBagelById, createBagel, deleteBagel }

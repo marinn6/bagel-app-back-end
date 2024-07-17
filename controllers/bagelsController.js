@@ -23,10 +23,27 @@ bagels.get("/:id", async (req, res) => {
     }
 })
 
-//Create: 
+//Create: localhost:4008/bagels/
 bagels.post('/', async (req, res) => {
     const newBagel = await createBagel(req.body)
-    res.json(newBagel)
+    res.status(201).json(newBagel)
+})
+
+//Delete: localhost:4008/bagels/:id
+// :id is a parameter(param)
+//req.params holds the params that the request(req) holds
+bagels.delete("/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const deletedBagel = await deleteBagel(id)
+        if(deleteBage.id){
+            res.status(200).json({ message: "Successfull deleted bagel." })
+        } else {
+            res.status(404).json({ error: "Color Not Found" })
+        } 
+    }   catch (error) {
+        console.error(`Error deleting color with id: ${id}`)
+    }
 })
 
 module.exports = bagels
