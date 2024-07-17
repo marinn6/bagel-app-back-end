@@ -2,7 +2,7 @@
 
 INSERT INTO bagels (id, name, description, type, price, is_glutenFree, is_available) VALUES
 (1, 'Plain Bagel', 'A classic plain bagel with a soft and chewy interior.', 'Traditional', 1.50, false, true),
-(2, 'Everything Bagel,' 'A bagel topped with a mix of poppy seeds, sesame seeds, garlic, onion, and salt.', 'Traditional', 1.75, false, true),
+(2, 'Everything Bagel', 'A bagel topped with a mix of poppy seeds, sesame seeds, garlic, onion, and salt.', 'Traditional', 1.75, false, true),
 (3, 'Cinnamon Raisin Bagel', 'A sweet bagel with cinnamon and raisins baked into the dough.', 'Sweet', 1.75. false, true),
 (4, 'Blueberry Bagel', 'A sweet bagel with juicy blueberries baked into the dough.', 'Sweet', 2.00, false, true),
 (5, 'Sesame Bagel', 'A bagel topped with toasted sesame seeds for a nutty flavor.', 'Traditional', 1.75, false, true),
