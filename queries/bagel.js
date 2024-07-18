@@ -38,7 +38,7 @@ const deleteBagel = async (id) => {
 
 const updateBagel = async (id, bagel) => {
     try {
-        const updatedBagel = await db.one("UPDATE bagels SET name=$1, is_favorite=$2 WHERE id=$3 RETURNING *", [bagel.name])
+        const updatedBagel = await db.one("UPDATE bagels SET name=$1, description=$2, type=$3 WHERE id=$4 RETURNING *", [bagel.name, bagel.description, bagel.type, id])
         return updatedBagel
     } catch (error) {
         return error

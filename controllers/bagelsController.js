@@ -37,9 +37,9 @@ bagels.delete("/:id", async (req, res) => {
         const { id } = req.params
         const deletedBagel = await deleteBagel(id)
         if(deletedBagel.id){
-            res.status(200).json({ message: "Successfull deleted bagel." })
+            res.status(200).json({ message: "Successfully deleted bagel." })
         } else {
-            res.status(404).json({ error: "Color Not Found" })
+            res.status(404).json({ error: "Bagel Not Found" })
         } 
     }   catch (error) {
         console.error(`Error deleting bagel with id: ${id}`)
@@ -47,13 +47,14 @@ bagels.delete("/:id", async (req, res) => {
 })
 
 //Edit/UPDATE: localhost:4008/bagels/:id
-bagels.put(":/id", async (req, res) => {
+bagels.put("/:id", async (req, res) => {
     const { id } = req.params
     const updatedBagel = await updateBagel(id, req.body)
-    if(updatedColor.id){
+    console.log(updatedBagel)
+    if(updatedBagel.id){
         res.status(200).json(updatedBagel)
     } else {
-        res.status(404).jsonp({ error: "Bagel Not Found" })
+        res.status(404).json({ error: "Bagel Not Found" })
     }
 })
 
