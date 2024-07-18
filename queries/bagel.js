@@ -1,4 +1,4 @@
-const db = require("../db/dbConfig");
+const db = require("../db/dbCOnfig")
 
 const getAllBagels = async () => {
     try {
@@ -18,12 +18,12 @@ const getBagelById = async (id) => {
     }
 };
 
-const createBagel = async() => {
+const createBagel = async(bagel) => {
     try {
-        const newBagel = await db.one("INSERT INTO bagels (name, description, type, price, is_glutenFree, is_available) VALUES ($1, $2, $3, $4, $5, $6, $7 RETURNING *", []) 
+        const newBagel = await db.one("INSERT INTO bagels (name, description, type, price, is_glutenFree, is_available) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [bagel.name, bagel.description, bagel.type, bagel.price, bagel.is_glutenFree, bagel.is_available]) 
         return newBagel
     } catch(error) {
-        return error
+        return error;
     }
 }
 
