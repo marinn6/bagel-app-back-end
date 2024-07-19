@@ -9,7 +9,7 @@ CREATE TABLE bagels (
     name TEXT NOT NULL,
     description TEXT NOT NULL,
     type TEXT NOT NULL,
-    price INT,
+    price INT NOT NULL,
     is_glutenFree BOOLEAN,
     is_available BOOLEAN
 );

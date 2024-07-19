@@ -10,7 +10,7 @@ app.use('/bagels', bagelsController)
 
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the Bagel Shop!")
+    res.send("Welcome to the Bagel Lab!")
 });
 
 app.get('*', (req, res) => {
