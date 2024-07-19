@@ -5,6 +5,7 @@ const { getAllBagels, getBagelById, createBagel, deleteBagel, updateBagel } =req
 //Index: localhost:4008/bagels
 bagels.get("/", async (req, res) => {
     const allBagels = await getAllBagels()
+    //if req.query.order === "as
     if(allBagels[0]){
         res.status(200).json(allBagels)
     } else {

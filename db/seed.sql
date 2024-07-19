@@ -1,6 +1,6 @@
 \c bagels_dev;
 
-INSERT INTO bagels (name, description, type, price, is_glutenFree, is_available) VALUES
+INSERT INTO bagels (name, description, type, price, is_gluten_free, is_available) VALUES
 ('Plain Bagel', 'A classic plain bagel with a soft and chewy interior.', 'Traditional', 1.50, false, true),
 ('Everything Bagel', 'A bagel topped with a mix of poppy seeds, sesame seeds, garlic, onion, and salt.', 'Traditional', 1.75, false, true),
 ('Cinnamon Raisin Bagel', 'A sweet bagel with cinnamon and raisins baked into the dough.', 'Sweet', 1.75, false, true),

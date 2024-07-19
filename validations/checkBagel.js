@@ -17,7 +17,7 @@ const checkPrice = (req, res, next) => {
 }
 
 const checkGlutenFree = (req, res, next) => {
-    if(req.body.is_glutenFree === 'boolean') {
+    if(req.body.is_gluten_free === 'boolean') {
         next()
     } else {
         res.status(400).json({ error: 'Gluten Free must be a boolean'})

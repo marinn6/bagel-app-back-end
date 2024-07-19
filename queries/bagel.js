@@ -20,7 +20,7 @@ const getBagelById = async (id) => {
 
 const createBagel = async(bagel) => {
     try {
-        const newBagel = await db.one("INSERT INTO bagels (name, description, type, price, is_glutenFree, is_available) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [bagel.name, bagel.description, bagel.type, bagel.price, bagel.is_glutenFree, bagel.is_available]);
+        const newBagel = await db.one("INSERT INTO bagels (name, description, type, price, is_gluten_free, is_available) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [bagel.name, bagel.description, bagel.type, bagel.price, bagel.is_gluten_free, bagel.is_available]);
         return newBagel
     } catch(error) {
         return error;
@@ -38,12 +38,14 @@ const deleteBagel = async (id) => {
 
 const updateBagel = async (id, bagel) => {
     try {
-        const updatedBagel = await db.one("UPDATE bagels SET name=$1, description=$2, type=$3 price=$4 is_gluten_Free=$5 is_available=$6 WHERE id=$7 RETURNING *", [bagel.name, bagel.description, bagel.type, bagel.price, bagel.is_glutenFree, bagel.is_available, id])
-        return updatedBagel
+        const updatedBagel = await db.one("UPDATE bagels SET name=$1, description=$2, type=$3, price=$4, is_gluten_free=$5, is_available=$6 WHERE id=$7 RETURNING *", [bagel.name, bagel.description, bagel.type, bagel.price, bagel.is_gluten_free, bagel.is_available, id])
+        console.log(updatedBagel)
+        return updatedBagel;
     } catch (error) {
-        return error
+        return error;
     }
 }
+
 
 
 module.exports = { getAllBagels, getBagelById, createBagel, deleteBagel, updateBagel }

@@ -10,6 +10,6 @@ CREATE TABLE bagels (
     description TEXT NOT NULL,
     type TEXT NOT NULL,
     price INT NOT NULL,
-    is_glutenFree BOOLEAN,
+    is_gluten_free BOOLEAN,
     is_available BOOLEAN
 );
