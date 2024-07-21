@@ -4,9 +4,9 @@ const { getAllBagels, getBagelById, createBagel, deleteBagel, updateBagel } =req
 
 //Index: localhost:4008/bagels
 bagels.get("/", async (req, res) => {
-    const allBagels = await getAllBagels()
-    //if req.query.order === "as
-    if(allBagels[0]){
+    const { order } = req.query;
+    const allBagels = await getAllBagels(order)
+    if(allBagels.length > 0){
         res.status(200).json(allBagels)
     } else {
         res.status(404).json({ error: "Internal Server Error" })

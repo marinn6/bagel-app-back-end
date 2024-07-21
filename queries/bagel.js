@@ -1,8 +1,14 @@
 const db = require("../db/dbCOnfig")
 
-const getAllBagels = async () => {
+const getAllBagels = async (order ) => {
     try {
-        const allBagels = await db.any("SELECT * FROM bagels");
+        let queryString = "SELECT * FROM bagels";
+        const params = [];
+        if (order) {
+            queryString += " ORDER BY name " + (order === "desc" ? "DESC" : "ASC");
+        }
+        console.log(queryString, order)
+        const allBagels = await db.any(queryString, params);
         return allBagels
     } catch (error) {
         return error;
@@ -45,6 +51,9 @@ const updateBagel = async (id, bagel) => {
         return error;
     }
 }
+
+
+
 
 
 
