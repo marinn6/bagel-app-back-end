@@ -4,8 +4,8 @@ const { getAllBagels, getBagelById, createBagel, deleteBagel, updateBagel } =req
 
 //Index: localhost:4008/bagels
 bagels.get("/", async (req, res) => {
-    const { order } = req.query;
-    const allBagels = await getAllBagels(order)
+    const { order, is_gluten_free } = req.query;
+    const allBagels = await getAllBagels(order, is_gluten_free)
     if(allBagels.length > 0){
         res.status(200).json(allBagels)
     } else {
