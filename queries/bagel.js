@@ -1,23 +1,27 @@
 const db = require("../db/dbCOnfig");
 
-const getAllBagels = async (order, is_gluten_free, type ) => {
+const getAllBagels = async (name, price, type ) => {
+    
     try {
         let queryString = "SELECT * FROM bagels";
         const params = [];
-
+        if ( type ) {
+            queryString+= ` WHERE `
+        }
         if (type === "Savory" || type === "Sweet" || type === "Gluten-free" || type === "Traditional") {
-            queryString += " WHERE type = $1 ";
+            queryString += `type = $${params.length+1} `;
             params.push(type)
         }
+        
+        if (name) {
+            queryString += " ORDER BY name " + (name === "desc" ? "DESC" : "ASC");
+            params.push(name)
+        }
+        if (price) {
+            queryString += ` ORDER BY price ${price == "desc" ? "DESC" : "ASC"}` ;
+            params.push(price)
+        }
 
-        if (is_gluten_free !== undefined) {
-            queryString += " WHERE is_gluten_free = $1 ";
-            params.push(is_gluten_free === "true");
-        }
-    
-        if (order) {
-            queryString += " ORDER BY name " + (order === "desc" ? "DESC" : "ASC");
-        }
         
         const allBagels = await db.any(queryString, params);
         return allBagels
