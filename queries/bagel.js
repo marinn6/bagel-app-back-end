@@ -1,4 +1,4 @@
-const db = require("../db/dbCOnfig");
+const db = require("../db/dbconf");
 
 const getAllBagels = async (name, price, type ) => {
     
