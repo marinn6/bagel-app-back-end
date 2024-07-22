@@ -1,9 +1,15 @@
 const db = require("../db/dbCOnfig");
 
-const getAllBagels = async (order, is_gluten_free ) => {
+const getAllBagels = async (order, is_gluten_free, type ) => {
     try {
         let queryString = "SELECT * FROM bagels";
         const params = [];
+
+        if (type === "Savory" || type === "Sweet" || type === "Gluten-free" || type === "Traditional") {
+            queryString += " WHERE type = $1 ";
+            params.push(type)
+        }
+
         if (is_gluten_free !== undefined) {
             queryString += " WHERE is_gluten_free = $1 ";
             params.push(is_gluten_free === "true");
